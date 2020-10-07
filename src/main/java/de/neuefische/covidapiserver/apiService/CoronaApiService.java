@@ -11,24 +11,19 @@ import java.time.LocalDate;
 public class CoronaApiService {
 
     private RestTemplate restTemplate = new RestTemplate();
-    private final static String apiUrl= "https://api.covid19api.com/total/country/";
+
 
     public ApiModel[] getApiModel(String country) {
-        return restTemplate.getForEntity(apiUrl + country + getDateRange(), ApiModel[].class).getBody();
+        return restTemplate.getForEntity(getRequestUrl(country), ApiModel[].class).getBody();
     }
 
-    private String getDateRange() {
+    private String getRequestUrl(String country) {
         LocalDate yesterday = LocalDate.now().minusDays(1);
         LocalDate sevenDaysAgo = yesterday.minusDays(7);
-        String dateRange = "/status/confirmed?from=" + sevenDaysAgo + "T00:00:00Z&to=" + yesterday +"T00:00:00Z";
-        return dateRange;
+        String url = "https://api.covid19api.com/total/country/" + country
+                + "/status/confirmed?from=" + sevenDaysAgo + "T00:00:00Z&to="
+                + yesterday +"T00:00:00Z";
+        return url;
     }
-
-//    private String getRequestUrl(String country) {
-//        LocalDate yesterday = LocalDate.now().minusDays(1);
-//        LocalDate sevenDaysAgo = yesterday.minusDays(7);
-//        String dateRange = "/status/confirmed?from=" + sevenDaysAgo + "T00:00:00Z&to=" + yesterday +"T00:00:00Z";
-//        return dateRange;
-//    }
 
 }
