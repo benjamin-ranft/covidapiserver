@@ -13,6 +13,6 @@ public class ApiModel {
     @JsonProperty("Country")
     private String country;
     @JsonProperty("Cases")
-    private float confirmedCases;
+    private double confirmedCases;
 
 }

@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 public class Country7DayAverage {
 
     private String country;
-    private float sevenDayAverage;
+    private double sevenDayAverage;
 
 }

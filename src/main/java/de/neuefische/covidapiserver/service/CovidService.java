@@ -16,12 +16,12 @@ public class CovidService {
 
     public Country7DayAverage getCountrySevenDayAverage(String country) {
         ApiModel[] apiModels = coronaApiService.getApiModel(country);
-        float average = (apiModels[apiModels.length-1].getConfirmedCases() - apiModels[0].getConfirmedCases()) / 7f;
+        double average = (apiModels[apiModels.length-1].getConfirmedCases() - apiModels[0].getConfirmedCases()) / 7;
         return new Country7DayAverage(country, average);
     }
 
     public boolean isRealClassPossible() {
-        float averageCases = getCountrySevenDayAverage("germany").getSevenDayAverage();
+        double averageCases = getCountrySevenDayAverage("germany").getSevenDayAverage();
         return averageCases <= 100;
     }
 }
