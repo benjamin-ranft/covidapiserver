@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("covid")
 public class CovidController {
 
-    private CovidService covidService;
+    private final CovidService covidService;
 
     public CovidController(CovidService covidService) {
         this.covidService = covidService;

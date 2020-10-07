@@ -38,16 +38,15 @@ class CovidControllerIntegrationTest {
                 new ApiModel("germany",15000f)
         };
         String url = "http://localhost:" + port + "/covid?country=germany";
-        Country7DayAverage expected = new Country7DayAverage("germany", 2000f);
         when(coronaApiService.getApiModel("germany")).thenReturn(apiModels);
         //WHEN
         ResponseEntity<Country7DayAverage> response = restTemplate.getForEntity(url, Country7DayAverage.class);
 
         //THEN
+        Country7DayAverage expected = new Country7DayAverage("germany", 2000f);
         assertThat(response.getStatusCode(),is(HttpStatus.OK));
         assertThat(response.getBody(), is(expected));
     }
-
 
     @Test
     @DisplayName("isRealClassPossible should return false when there are more than 100 cases")

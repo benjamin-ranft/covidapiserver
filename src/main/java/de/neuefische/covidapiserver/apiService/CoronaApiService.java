@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @Service
 public class CoronaApiService {
 
-    private RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate = new RestTemplate();
 
 
     public ApiModel[] getApiModel(String country) {
