@@ -14,5 +14,7 @@ public class ApiModel {
     private String country;
     @JsonProperty("Cases")
     private double confirmedCases;
+    @JsonProperty ("Date")
+    private String date;
 
 }

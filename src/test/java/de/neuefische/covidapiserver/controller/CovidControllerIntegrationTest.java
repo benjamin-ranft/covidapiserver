@@ -34,8 +34,8 @@ class CovidControllerIntegrationTest {
     void getCountry7DayAverageTest() {
         //GIVEN
         ApiModel[] apiModels = new ApiModel[]{
-                new ApiModel("germany", 1000f),
-                new ApiModel("germany",15000f)
+                new ApiModel("germany", 1000f, "2020-09-30T00:00:00Z"),
+                new ApiModel("germany",15000f, "2020-09-30T00:00:00Z")
         };
         String url = "http://localhost:" + port + "/covid?country=germany";
         when(coronaApiService.getApiModel("germany")).thenReturn(apiModels);
@@ -53,8 +53,8 @@ class CovidControllerIntegrationTest {
     void isRealClassNotPossibleTest() {
         //GIVEN
         ApiModel[] apiModels = new ApiModel[]{
-                new ApiModel("germany", 0f),
-                new ApiModel("germany",701f)
+                new ApiModel("germany", 0f, "2020-09-30T00:00:00Z"),
+                new ApiModel("germany",701f, "2020-09-30T00:00:00Z")
         };
         String url = "http://localhost:" + port + "/covid/realClass";
         when(coronaApiService.getApiModel("germany")).thenReturn(apiModels);
@@ -71,8 +71,8 @@ class CovidControllerIntegrationTest {
     void isRealClassPossibleTest() {
         //GIVEN
         ApiModel[] apiModels = new ApiModel[]{
-                new ApiModel("germany", 0f),
-                new ApiModel("germany",700f)
+                new ApiModel("germany", 0f, "2020-09-30T00:00:00Z"),
+                new ApiModel("germany",700f, "2020-09-30T00:00:00Z")
         };
         String url = "http://localhost:" + port + "/covid/realClass";
         when(coronaApiService.getApiModel("germany")).thenReturn(apiModels);
